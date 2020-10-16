@@ -16,33 +16,22 @@
 # pal = list(input())
 # count = 0
 # for el in pal:
-#     if len(el) % 2:
-#         if pal.count(el) == 2:
-#             continue
-#         else:
-#             count += 1
-#     else:
-#         if pal.count(el) == 2:
-#             continue
-#         else:
-#             count -= 1
-#
+#     if not pal.count(el) == 2 and len(el) % 2:
+#         count += 1
+#     elif not pal.count(el) == 2 and len(el) % 2 == 0:
+#         count -= 1
 # print(-1 < count <= 1)
 
 
 # 3 Narek
 # for i in range(1, 101):
 #     for j in range(1, 101):
-#         k = 1
-#         while k < 101 and (k ** j <= i or j ** k <= i):
-#             if k ** j == i and j ** k == i:
-#                 print(k, j, i)
-#             k += 1
-
+#         if i ** j == j ** i and i ** j <= 100:
+#             print(i, j, i ** j)
 
 # 4
-for i in range(1, 5):
-    for j in range(i):
-        print(i, end='')
-    print()
-    print()
+# for i in range(1, 5):
+#     for j in range(i):
+#         print(i, end='')
+#     print()
+#     print()
