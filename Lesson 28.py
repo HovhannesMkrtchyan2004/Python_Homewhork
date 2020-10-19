@@ -13,14 +13,14 @@
 
 
 # 2
-# pal = list(input())
-# count = 0
-# for el in pal:
-#     if not pal.count(el) == 2 and len(el) % 2:
-#         count += 1
-#     elif not pal.count(el) == 2 and len(el) % 2 == 0:
-#         count -= 1
-# print(-1 < count <= 1)
+pal = list(input())
+count = 0
+for el in pal:
+    if not pal.count(el) == 2 and len(el) % 2:
+        count += 1
+    elif not pal.count(el) == 2 and len(el) % 2 == 0:
+        count -= 1
+print(-1 < count <= 1)
 
 
 # 3 Narek
