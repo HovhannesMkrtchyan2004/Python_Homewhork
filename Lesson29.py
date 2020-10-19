@@ -38,21 +38,9 @@
 # 3 Ruben
 # n = int(input())
 # my_list = []
-# name = []
 # for _ in range(n):
 #     my_list.append([input(), float(input())])
-#
-# tver = [el[1] for el in my_list]
-# minimum = min(tver)
-# while minimum in tver:
-#     tver.remove(minimum)
-#
-# for i in range(n):
-#     if my_list[i][1] == min(tver):
-#         name.append(my_list[i][0])
-#
-# for el in sorted(name):
-#     print(el)
+# print('\n'.join(sorted([my_list[i][0] for i in range(n) if my_list[i][1] == sorted(list(set([el[1] for el in my_list])))[1]])))
 
 
 # 4 Ruben
