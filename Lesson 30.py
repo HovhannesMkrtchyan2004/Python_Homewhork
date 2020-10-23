@@ -43,60 +43,38 @@
 
 # Narek 2
 x = input().split('=')
-y = list(x[0])
-for i in range(len(x[0])):
-    if x[0][i] == '+':
-        x[1] += '-'
-        j = i + 1
-        while j < len(x[0]) and x[0][j].isdigit():
-            x[1] += x[0][j]
-            j += 1
-    elif x[0][i] == '-':
-        x[1] += '+'
-        j = i + 1
-        while j < len(x[0]) and x[0][j].isdigit():
-            x[1] += x[0][j]
-            j += 1
-
-count = 0
-for i in range(len(x[1]) - 1, -1, -1):
-    if x[1][i] == '+':
-        j = i + 1
-        z = ''
-        while j < len(x[1]) and x[1][j].isdigit():
-            z += x[1][j]
-            j += 1
-        if len(z)>0:
-            count += int(z)
-    elif x[1][i] == '-':
-        j = i + 1
-        z = ''
-        while j < len(x[1]) and x[1][j].isdigit():
-            z += x[1][j]
-            j += 1
-        if len(z)>0:
-            count -= int(z)
-    elif i == 0 and x[1][i].isdigit():
-        j = i
-        z = ''
-        while j < len(x[1]) and x[1][j].isdigit():
-            z += x[1][j]
-            j += 1
-        count += + int(z)
+my_list = []
+lucum = int(x[1])
 count_x = 0
-for i in range(len(x[0])):
-    if x[0][i] == 'x':
-        if i == 0:
-            count_x += 1
-        elif x[0][i-1].isdigit():
-            j = i - 1
-            z = ''
-            while j >= 0 and x[1][j].isdigit():
-                z += x[0][j]
-                j -= 1
-            if len(z):
-                count_x += int(z)
+i = 0
+st = ''
+if x[0][0].isalnum():
+    st += '+'
+while i < len(x[0]):
+    if x[0][i].isalnum() or i == 0:
+        st += x[0][i]
+        i += 1
+    else:
+        my_list.append(st)
+        st = ''
+        st += x[0][i]
+        i += 1
+my_list.append(st)
+for i in range(len(my_list)):
+    if 'x' in my_list[i]:
+        if my_list[i][0] == '+':
+            if my_list[i][1:len(my_list[i]) - 1]:
+                count_x += int(my_list[i][1:len(my_list[i]) - 1])
+            else:
+                count_x += 1
         else:
-            count_x += 1
-
-print('x =', int(count/count_x))
+            if my_list[i][1:len(my_list[i])-1]:
+                count_x -= int(my_list[i][1:len(my_list[i]) - 1])
+            else:
+                count_x -= 1
+    else:
+        if my_list[i][0] == '+':
+            lucum -= int(my_list[i][1:])
+        else:
+            lucum += int(my_list[i][1:])
+print('x =', lucum/count_x)
