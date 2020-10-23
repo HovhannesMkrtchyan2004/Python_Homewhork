@@ -68,7 +68,7 @@ for i in range(len(my_list)):
             else:
                 count_x += 1
         else:
-            if my_list[i][1:len(my_list[i])-1]:
+            if my_list[i][1:len(my_list[i]) - 1]:
                 count_x -= int(my_list[i][1:len(my_list[i]) - 1])
             else:
                 count_x -= 1
@@ -77,4 +77,4 @@ for i in range(len(my_list)):
             lucum -= int(my_list[i][1:])
         else:
             lucum += int(my_list[i][1:])
-print('x =', lucum/count_x)
+print('x =', lucum / count_x)
