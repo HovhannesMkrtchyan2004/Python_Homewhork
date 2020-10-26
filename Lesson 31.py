@@ -20,6 +20,12 @@
 #         j, k = j + 1, k + 1
 #     if j == len(tictactoe):
 #         return x
+#     k = 0
+#     j = len(tictactoe) - 1
+#     while j >= 0 and tictactoe[k][j] == x:
+#         j, k = j - 1, k + 1
+#     if j == -1:
+#         return x
 #     # o-i hamar - nuyny
 #     for i in range(len(tictactoe)):
 #         j = 0
@@ -39,32 +45,37 @@
 #         j, k = j + 1, k + 1
 #     if j == len(tictactoe):
 #         return o
+#     k = 0
+#     j = len(tictactoe) - 1
+#     while j >= 0 and tictactoe[k][j] == o:
+#         j, k = j - 1, k + 1
+#     if j == -1:
+#         return o
 #
 #     for i in range(len(tictactoe)):
 #         if 'Empty' in tictactoe[i]:
-#             count_x = 0
-#             count_o = 0
+#             count = 0
 #             for j in range(len(tictactoe)):
-#                 count_o += tictactoe[j].count(o)
-#                 count_x += tictactoe[j].count(x)
-#             if count_x > count_o:
+#                 count += tictactoe[j].count(o)
+#                 count -= tictactoe[j].count(x)
+#             if count > 0:
 #                 return o
 #             else:
 #                 return x
 #     return -1
 #
 #
-# l = [['x', 'o', 'x'],
-#      ['x', 'x', 'o'],
+# l = [['x', 'o', 'o'],
+#      ['x', 'Empty', 'x'],
 #      ['o', 'x', 'o']]
 # print(Tic_Tac_Toe(l))
 
 # 2 Narek
 # def digital_progress(progress):
 #     i = 3
-#     progress_plus = progress[1]
-#     j = 2
-#     while i <= progress[2] and j < len(progress):
+#     progress_plus = progress[0]
+#     j = 1
+#     while i <= progress[1] and j < len(progress):
 #         if progress_plus + i <= progress[j]:
 #             progress_plus += i
 #         elif progress[j] - progress_plus == 0:
@@ -72,8 +83,8 @@
 #         else:
 #             progress_plus = progress[1]
 #             i += 1
-#             j = 2
-#     print(i <= progress[2])
+#             j = 1
+#     print(i <= progress[1])
 #
 #
 # digital_progress([1,5,23,32])
