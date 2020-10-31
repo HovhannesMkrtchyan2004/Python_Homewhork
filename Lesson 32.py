@@ -120,3 +120,125 @@
 #
 # for el in add_queen_possible_steps(chess_board):
 #     print(*el)
+
+# 1 Narek
+# a = input()
+# b = input()
+#
+# letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+#
+# print((letter.index(a[0]) + 1 + letter.index(b[0]) + 1 + int(a[1]) + int(b[1])) % 2 == 0)
+
+# 2 Narek
+chess_board = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    ['r', 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0,0, 0, 0, 0, 0, 0],
+    [0, 'q', 0, 0, 0, 0, 0, 0],
+    ['ek',0, 0, 0, 0, 0, 0, 'r']
+]
+
+
+def mat(chess_board):
+    r_1 = []
+    r_2 = []
+    q = []
+    ek = []
+    for i in range(8):
+        for j in range(8):
+            if 'r' == chess_board[i][j] and len(r_1) == 0:
+                r_1 = [i, j]
+            elif 'r' == chess_board[i][j]:
+                r_2 = [i, j]
+            if 'q' == chess_board[i][j]:
+                q = [i, j]
+            if 'ek' == chess_board[i][j]:
+                ek = [i, j]
+    x = [r_1[0], r_2[0], q[0]]
+    y = [r_1[1], r_2[1], q[1]]
+    flag = False
+    for i in range(2):
+        if (ek[0] == r_1[0] and not (ek[1] == r_1[1])) or (ek[0] == r_2[0] and not (ek[1] == r_2[1])) or (
+                ek[0] == q[0] and not (ek[1] == q[1])) or \
+                (ek[1] == r_1[1] and not (ek[0] == r_1[0])) or (ek[1] == r_2[1] and not (ek[0] == r_2[0])) or (
+                ek[1] == q[1] and not (ek[0] == q[0])) or \
+                (abs(ek[0] - q[0]) == abs(ek[1] - q[1]) and ek[1] == q[1] and not (ek[0] == q[0])):
+            x = ek
+            if x[0] + 1 < 8 and x[1] + 1 < 8:
+                x[0], x[1] = x[0] + 1, x[1] + 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+            x = ek
+            if x[0] - 1 > 0 and x[1] - 1 > 0:
+                x[0], x[1] = x[0] - 1, x[1] - 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+            x = ek
+            if x[0] - 1 > 0 and x[1] + 1 < 8:
+                x[0], x[1] = x[0] - 1, x[1] + 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+            x = ek
+            if x[0] + 1 < 8 and x[1] - 1 > 0:
+                x[0], x[1] = x[0] + 1, x[1] - 1
+                x[0] += 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+            x = ek
+            if x[0] + 1 < 8:
+                x[0] += 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+            x = ek
+            if x[0] - 1 > 0:
+                x[0] -= 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+            if x[1] - 1 > 0:
+                x[1] -= 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+            if x[1] + 1 < 8:
+                x[1] += 1
+                if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
+                        x[0] == q[0] and not (x[1] == q[1])) or \
+                        (x[1] == r_1[1] and not (x[0] == r_1[0])) or (x[1] == r_2[1] and not (x[0] == r_2[0])) or (
+                                x[1] == q[1] and not (x[0] == q[0])) or \
+                        (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
+                    flag = True
+
+    print(flag)
+
+
+mat(chess_board)
