@@ -136,8 +136,8 @@ chess_board = [
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0,0, 0, 0, 0, 0, 0],
-    [0, 'q', 0, 0, 0, 0, 0, 0],
+    [0, 'q',0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
     ['ek',0, 0, 0, 0, 0, 0, 'r']
 ]
 
@@ -157,8 +157,7 @@ def mat(chess_board):
                 q = [i, j]
             if 'ek' == chess_board[i][j]:
                 ek = [i, j]
-    x = [r_1[0], r_2[0], q[0]]
-    y = [r_1[1], r_2[1], q[1]]
+    x = [0,0]
     flag = False
     for i in range(2):
         if (ek[0] == r_1[0] and not (ek[1] == r_1[1])) or (ek[0] == r_2[0] and not (ek[1] == r_2[1])) or (
@@ -166,7 +165,7 @@ def mat(chess_board):
                 (ek[1] == r_1[1] and not (ek[0] == r_1[0])) or (ek[1] == r_2[1] and not (ek[0] == r_2[0])) or (
                 ek[1] == q[1] and not (ek[0] == q[0])) or \
                 (abs(ek[0] - q[0]) == abs(ek[1] - q[1]) and ek[1] == q[1] and not (ek[0] == q[0])):
-            x = ek
+            x[0],x[1] = ek[0],ek[1]
             if x[0] + 1 < 8 and x[1] + 1 < 8:
                 x[0], x[1] = x[0] + 1, x[1] + 1
                 if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
@@ -175,7 +174,7 @@ def mat(chess_board):
                                 x[1] == q[1] and not (x[0] == q[0])) or \
                         (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
                     flag = True
-            x = ek
+            x[0],x[1] = ek[0],ek[1]
             if x[0] - 1 > 0 and x[1] - 1 > 0:
                 x[0], x[1] = x[0] - 1, x[1] - 1
                 if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
@@ -184,7 +183,7 @@ def mat(chess_board):
                                 x[1] == q[1] and not (x[0] == q[0])) or \
                         (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
                     flag = True
-            x = ek
+            x[0],x[1] = ek[0],ek[1]
             if x[0] - 1 > 0 and x[1] + 1 < 8:
                 x[0], x[1] = x[0] - 1, x[1] + 1
                 if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
@@ -193,7 +192,7 @@ def mat(chess_board):
                                 x[1] == q[1] and not (x[0] == q[0])) or \
                         (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
                     flag = True
-            x = ek
+            x[0],x[1] = ek[0],ek[1]
             if x[0] + 1 < 8 and x[1] - 1 > 0:
                 x[0], x[1] = x[0] + 1, x[1] - 1
                 x[0] += 1
@@ -203,7 +202,7 @@ def mat(chess_board):
                                 x[1] == q[1] and not (x[0] == q[0])) or \
                         (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
                     flag = True
-            x = ek
+            x[0],x[1] = ek[0],ek[1]
             if x[0] + 1 < 8:
                 x[0] += 1
                 if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
@@ -212,7 +211,7 @@ def mat(chess_board):
                                 x[1] == q[1] and not (x[0] == q[0])) or \
                         (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
                     flag = True
-            x = ek
+            x[0],x[1] = ek[0],ek[1]
             if x[0] - 1 > 0:
                 x[0] -= 1
                 if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
@@ -221,6 +220,7 @@ def mat(chess_board):
                                 x[1] == q[1] and not (x[0] == q[0])) or \
                         (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
                     flag = True
+            x[0], x[1] = ek[0], ek[1]
             if x[1] - 1 > 0:
                 x[1] -= 1
                 if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
@@ -229,6 +229,7 @@ def mat(chess_board):
                                 x[1] == q[1] and not (x[0] == q[0])) or \
                         (abs(x[0] - q[0]) == abs(x[1] - q[1]) and x[1] == q[1] and not (x[0] == q[0]))):
                     flag = True
+            x[0], x[1] = ek[0], ek[1]
             if x[1] + 1 < 8:
                 x[1] += 1
                 if not((x[0] == r_1[0] and not (x[1] == r_1[1])) or (x[0] == r_2[0] and not (x[1] == r_2[1])) or (
