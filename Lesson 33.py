@@ -1,13 +1,21 @@
 # 1 Narek
-# def get_tree_coord(list_1):
-#     tree_coord = []
-#     for i in range(len(list_1)):
-#         if list_1[i] == -1:
-#             tree_coord.append(i)
-#     for i in range(len(list_1)):
-#         if list_1[i] == -1:
-#             list_1.append(list_1.pop(i))
-#     return tree_coord, list_1
+def tree(list_1):
+    tree_coord = []
+    for i in range(len(list_1)):
+        if list_1[i] == -1:
+            tree_coord.append(i)
+    for i in range(len(list_1)):
+        if list_1[i] == -1:
+            list_1.append(list_1.pop(i))
+    for _ in range(len(tree_coord)):
+        list_1.pop()
+    list_1.sort()
+    for el in tree_coord:
+        list_1.insert(el, -1)
+    return list_1
+
+
+print(tree([2, -1, 1, 5, 4, -1, 3]))
 #
 #
 # def sort_and_push_tree_cords(list_1):
@@ -23,11 +31,10 @@
 # 2 Narek
 # my_list = [[10, 'f', 'w'],
 #            [0, 'w', 0],
-#            [0, 'w', 0]]
-# flag = False
+#            [0, 'w', 10]]
+#
 #
 # def get_coord_enimals(board):
-#     global flag
 #     flag = False
 #     enimal_1 = list()
 #     for i in range(len(board)):
@@ -37,24 +44,24 @@
 #             elif enimal_1 and board[i][j] == 10:
 #                 enimal_2 = [i, j]
 #                 flag = True
+#                 break
 #     if flag:
-#         flag = True
 #         return [enimal_1, enimal_2]
 #
 #     else:
-#         return enimal_1
+#         return [enimal_1]
 #
 #
 # def game(board):
-#     global flag
-#     if flag:
+#     len_ = len(get_coord_enimals(board))
+#     if len_ == 2:
 #         enimal_1, enimal_2 = get_coord_enimals(board)
 #         count = 0
 #     else:
-#         enimal_1 = get_coord_enimals(board)
+#         enimal_1 = get_coord_enimals(board)[0]
 #         count = 1
 #     while count != 2:
-#         if flag and (abs(enimal_1[0] - enimal_2[0]) == 1 or abs(enimal_1[1] - enimal_2[1]) == 1) and count == 0:
+#         if len_ == 2 and (abs(enimal_1[0] - enimal_2[0]) == 1 or abs(enimal_1[1] - enimal_2[1]) == 1) and count == 0:
 #             if board[enimal_1[0]][enimal_1[1]] - board[enimal_2[0]][enimal_2[1]] == 0:
 #                 board[enimal_1[0]][enimal_1[1]], board[enimal_2[0]][enimal_2[1]] = 'd', 'd'
 #                 return board
@@ -66,7 +73,7 @@
 #                 board[enimal_1[0]][enimal_1[1]] -= board[enimal_2[0]][enimal_2[1]]
 #                 board[enimal_2[0]][enimal_2[1]] = 'd'
 #                 count += 1
-#         elif not flag or abs(enimal_1[0] - enimal_2[0]) > 1 or abs(enimal_1[1] - enimal_2[1]) > 1 or count == 1:
+#         elif len_ == 1 or abs(enimal_1[0] - enimal_2[0]) > 1 or abs(enimal_1[1] - enimal_2[1]) > 1 or count == 1:
 #             if board[enimal_1[0]][enimal_1[1]] != 'd':
 #                 if enimal_1[1] + 1 < len(board[enimal_1[0]]) and board[enimal_1[0]][enimal_1[1] + 1] == 'f':
 #                     board[enimal_1[0]][enimal_1[1]] += 1
@@ -181,7 +188,7 @@
 #                         if board[enimal_1[0]][enimal_1[1]] <= 0:
 #                             board[enimal_1[0]][enimal_1[1]] = 'd'
 #                             count += 1
-#             if flag and board[enimal_2[0]][enimal_2[1]] != 'd':
+#             if len_ == 2 and board[enimal_2[0]][enimal_2[1]] != 'd':
 #                 if enimal_2[1] + 1 < len(board[enimal_2[0]]) and board[enimal_2[0]][enimal_2[1] + 1] == 'f':
 #                     board[enimal_2[0]][enimal_2[1]] += 1
 #                     board[enimal_2[0]][enimal_2[1]], board[enimal_2[0]][enimal_2[1] + 1] = 0, board[enimal_2[0]][
@@ -296,28 +303,7 @@
 #                             board[enimal_2[0]][enimal_2[1]] = 'd'
 #                             count += 1
 #     return board
-#
-# for el in game(my_list):
-#     print(*el)
 
-
-# 1 Ruben
-# def swap_list_elements(list_1):
-#     for i in range(len(list_1)):
-#         if list_1[i] % 2 and i % 2 == 0:
-#             j = i
-#             while j < len(list_1):
-#                 if list_1[j] % 2 == 0 and j % 2:
-#                     list_1[i], list_1[j] = list_1[j], list_1[i]
-#                     break
-#                 j += 1
-#         elif list_1[i] % 2 == 0 and i % 2:
-#             j = i
-#             while j < len(list_1):
-#                 if list_1[j] % 2 and j % 2 == 0:
-#                     list_1[i], list_1[j] = list_1[j], list_1[i]
-#                 j += 1
-#     return list_1
 
 # 2 Ruben
 def get_count_of_rectangles(dict_of_points):
