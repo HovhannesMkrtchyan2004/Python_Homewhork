@@ -12,38 +12,40 @@
 
 # Narek 2
 # def mult(list_):
-#     print(list_)
-#     flag = False
-#     for el in list_:
-#         if el > 0:
-#             flag = True
-#     if flag:
-#         mult = list_.pop(list_.index(max(list_)))
-#         max([-el for el in list_])
-#         minus_1, minus_2 = sorted([-el for el in list_])[-1], sorted([-el for el in list_])[-2]
-#         plus_1, plus_2 = sorted(list_)[-1], list_[-2]
-#         if mult * plus_1 * plus_2 >= mult * minus_1 * minus_2:
-#             return mult * plus_1 * plus_2
-#         else:
-#             return mult * minus_1 * minus_2
+#     list_.sort()
+#     mult = list_.pop()
+#     if mult * list_[-1] * list_[-2] >= mult * list_[0] * list_[1]:
+#         return mult * list_[-1] * list_[-2]
 #     else:
-#         return list_.pop(list_.index(max(list_))) * list_.pop(list_.index(max(list_))) * list_.pop(
-#             list_.index(max(list_)))
+#         return mult * list_[0] * list_[1]
 #
 #
-# print(mult([-3, -5, -2, 20,1,33,-500]))
+# print(mult([9,5,8,5,20,1,2,-3,-2,-1,0]))
+
 
 # Ruben 1
+# def find_small_number(k,query_counts):
+#     for i in range(len(query_counts)):
+#         if query_counts[i]<k:
+#             return query_counts[i]
+#     return False
+#
+#
 # def answer_queries(k, *query_counts):
+#     query_counts = list(query_counts)
 #     count = 1
-#     summ = sum(query_counts)
+#     if find_small_number(k,query_counts):
+#         summ = sum(query_counts[:query_counts.index(find_small_number(k,query_counts))+1])
+#     else:
+#         summ = sum(query_counts)
+#
 #     while summ >= k:
 #         summ -= k
 #         count += 1
-#     return  count
+#     return count
 #
 #
-# print(answer_queries(1, 100))
+# print(answer_queries(5, 10, 5, 5, 3, 2, 1))
 
 # Ruben 2
 def non_decreasing_sequence(*nums):
@@ -91,5 +93,4 @@ def non_decreasing_sequence(*nums):
 
     return False
 
-
-print(non_decreasing_sequence(  1, -1, -2, 3, 6,-7))
+# print(non_decreasing_sequence( -2, -3, -1 ))
