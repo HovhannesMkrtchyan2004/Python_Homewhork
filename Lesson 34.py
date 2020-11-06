@@ -60,7 +60,10 @@ def non_decreasing_sequence(*nums):
                     nums[i - 1] = -nums[i - 1]
                     if not nums[i - 2] <= nums[i - 1] <= nums[i]:
                         return False
-    return True, nums
+    if sorted(nums) == nums:
+        return True, nums
+    else:
+        return False, nums
 
 
-print(non_decreasing_sequence(1, 1, -1))
+print(non_decreasing_sequence(-4,6,5))
