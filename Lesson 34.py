@@ -47,49 +47,20 @@
 # print(answer_queries(5,3,3,3,3,3,3))
 
 # Ruben 2
-# def non_decreasing_sequence(*nums):
-#     # flag = False
-#     nums = list(nums)
-#     for i in range(2, len(nums)):
-#         if nums[i - 2] <= nums[i - 1] <= nums[i] and nums == sorted(nums):
-#             return True, nums
-#         if nums[i - 2] <= nums[i - 1] > nums[i]:
-#             if nums[i - 2] <= nums[i - 1] <= -nums[i] or -nums[i - 2] <= -nums[i - 1] <= nums[i]:
-#                 nums[i] = -nums[i]
-#                 if nums == sorted(nums):
-#                     return True, nums
-#                 elif not nums[i - 2] <= nums[i - 1] <= nums[i]:
-#                     nums[i] = -nums[i]
-#                 nums[i - 1] = -nums[i - 1]
-#                 if nums == sorted(nums):
-#                     return True, nums
-#                 elif not nums[i - 1] <= nums[i]:
-#                     nums[i - 1] = -nums[i - 1]
-#                 nums[i - 2] = -nums[i - 2]
-#                 if nums == sorted(nums):
-#                     return True, nums
-#                 elif not nums[i - 2] <= nums[i - 1]:
-#                     nums[i - 2] = -nums[i - 2]
-#         if nums[i - 2] > nums[i - 1] > nums[i]:
-#             if -nums[i - 2] <= -nums[i - 1] <= -nums[i]:
-#                 nums[i - 2], nums[i - 1], nums[i] = -nums[i - 2], -nums[i - 1], -nums[i]
-#                 if nums == sorted(nums):
-#                     return True, nums
-#                 elif not nums[i - 2] <= nums[i - 1] <= nums[i]:
-#                     nums[i - 2], nums[i - 1], nums[i] = -nums[i - 2], -nums[i - 1], -nums[i]
-#         if nums[i - 2] > nums[i - 1] < nums[i]:
-#             if -nums[i - 2] <= nums[i - 1] <= nums[i] or nums[i - 2] <= -nums[i - 1] <= nums[i]:
-#                 nums[i - 2] = -nums[i - 2]
-#                 if nums == sorted(nums):
-#                     return True, nums
-#                 elif not nums[i - 2] <= nums[i - 1] <= nums[i]:
-#                     nums[i - 2] = -nums[i - 2]
-#                 nums[i - 1] = -nums[i - 1]
-#                 if nums == sorted(nums):
-#                     return True, nums
-#                 elif not nums[i - 2] <= nums[i - 1] <= nums[i]:
-#                     nums[i - 1] = -nums[i - 1]
-#
-#     return False
+def non_decreasing_sequence(*nums):
+    nums = list(nums)
+    for i in range(2, len(nums)):
+        if not nums[i - 2] <= nums[i - 1] <= nums[i]:
+            if nums[i - 2] > 0:
+                nums[i - 2] = -nums[i - 2]
+            if not nums[i - 2] <= nums[i - 1] <= nums[i]:
+                if nums[i] < 0:
+                    nums[i] = -nums[i]
+                if not nums[i - 2] <= nums[i - 1] <= nums[i]:
+                    nums[i - 1] = -nums[i - 1]
+                    if not nums[i - 2] <= nums[i - 1] <= nums[i]:
+                        return False
+    return True, nums
 
-# print(non_decreasing_sequence( -2, -3, -1 ))
+
+print(non_decreasing_sequence(1, 1, -1))
