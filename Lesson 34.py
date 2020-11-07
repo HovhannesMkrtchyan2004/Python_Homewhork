@@ -56,16 +56,10 @@ def non_decreasing_sequence(*nums):
 
 def ds(*nums):
     if non_decreasing_sequence(*nums):
-        nums = list(nums)
-        if nums[0] > 0:
-            nums[0] = -nums[0]
-        if nums[-1] < 0:
-            nums[-1] = -nums[-1]
-        for i in range(2, len(nums)):
-            if nums[i - 2] < nums[i - 1] > nums[i]:
+        nums = [abs(el) for el in nums]
+        nums[0] = -nums[0]
+        for i in range(1, len(nums) - 1):
+            if -nums[i] >= nums[i - 1]:
                 nums[i] = -nums[i]
-            elif nums[i - 2] > nums[i - 1] > nums[i]:
-                nums[i - 1] = -nums[i - 1]
         return non_decreasing_sequence(*nums), nums
     return non_decreasing_sequence(*nums)
-
