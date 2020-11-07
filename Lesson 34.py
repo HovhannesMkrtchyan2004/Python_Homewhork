@@ -24,7 +24,6 @@
 
 
 # Ruben 1
-# Ruben 1
 # def answer_queries(k, *query_counts):
 #     count = 1
 #     query_counts = list(query_counts)
@@ -35,7 +34,7 @@
 #                 count += 1
 #             else:
 #                 num = query_counts[i]
-#                 while num > 0:
+#                 while num >= k:
 #                     count +=1
 #                     num -= k
 #         elif query_counts[i] == k:
@@ -43,27 +42,17 @@
 #         else:
 #             return count
 #     return count
-#
-# print(answer_queries(5,3,3,3,3,3,3))
+# print(answer_queries( 5, 3,3,3,3))
 
 # Ruben 2
 def non_decreasing_sequence(*nums):
     nums = list(nums)
     for i in range(2, len(nums)):
-        if not nums[i - 2] <= nums[i - 1] <= nums[i]:
-            if nums[i - 2] > 0:
-                nums[i - 2] = -nums[i - 2]
-            if not nums[i - 2] <= nums[i - 1] <= nums[i]:
-                if nums[i] < 0:
-                    nums[i] = -nums[i]
-                if not nums[i - 2] <= nums[i - 1] <= nums[i]:
-                    nums[i - 1] = -nums[i - 1]
-                    if not nums[i - 2] <= nums[i - 1] <= nums[i]:
-                        return False
-    if sorted(nums) == nums:
-        return True, nums
-    else:
-        return False, nums
+        if (abs(nums[i - 1]) - abs(nums[i]) > 0 and abs(nums[i - 2]) - abs(nums[i - 1]) < 0 and nums[i - 1] != 0) or \
+                (nums[i - 1] == 0 and nums[i - 2] != 0 and nums[i] != 0 and nums.count(0) > 1):
+            return False
+    return True
 
 
-print(non_decreasing_sequence(-4,6,5))
+print(non_decreasing_sequence(2, 3, -5, -7, 9))
+
