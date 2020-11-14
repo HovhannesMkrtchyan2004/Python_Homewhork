@@ -48,7 +48,7 @@
 def non_decreasing_sequence(*nums):
     nums = list(nums)
     for i in range(2, len(nums)):
-        if (abs(nums[i - 1]) - abs(nums[i]) > 0 and abs(nums[i - 2]) - abs(nums[i - 1]) < 0 and nums[i - 1] != 0) or \
+        if (abs(nums[i - 1]) - abs(nums[i]) > 0 < abs(nums[i - 2]) - abs(nums[i - 1]) and nums[i - 1] != 0) or \
                 (nums[i - 1] == 0 and nums[i - 2] != 0 and nums[i] != 0 and nums.count(0) > 1):
             return False
     return True
