@@ -37,13 +37,13 @@ def create_a_testing_work_environment(initial_directory_path):
         filepath = os.path.join(new_dir, 'file_' + str(i) + '.txt')
         with open(filepath, 'w'):
             pass
-    new_dir = os.path.join(initial_directory_path, r'dir_2\dir_7')
+    new_dir = os.path.join(initial_directory_path, os.path.join('dir_2', 'dir_7'))
     filepath = os.path.join(new_dir, 'file_' + '11' + '.txt')
     with open(filepath, 'w'):
         pass
 
 
-#create_a_testing_work_environment(initial_directory_path)
+# create_a_testing_work_environment(initial_directory_path)
 
 
 def delete_all_the_files_and_directories_recursively(directory):
@@ -55,5 +55,4 @@ def delete_all_the_files_and_directories_recursively(directory):
             delete_all_the_files_and_directories_recursively(new_path)
             os.rmdir(new_path)
 
-
-#delete_all_the_files_and_directories_recursively(initial_directory_path)
+# delete_all_the_files_and_directories_recursively(initial_directory_path)
