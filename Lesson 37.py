@@ -38,6 +38,24 @@
 #
 # print(digitsProduct(19))
 
-#Narek 1
+# Narek 1
+# def length(num):
+#     len_num = 1
+#     while num // 10 > 0:
+#         len_num += 1
+#         num //= 10
+#     return len_num
+#
+#
+# print(length(10))
 
-
+# Narek 2
+# def find_numbers_in_list(list_, num):
+#     plus_numbers = set()
+#     for el in list_:
+#         if num - el in list_:
+#             plus_numbers.add(tuple(sorted([el, num - el])))
+#     return plus_numbers
+#
+#
+# print(*find_numbers_in_list([-5, -3, 2, -11, 3], -8))
