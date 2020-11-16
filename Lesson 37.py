@@ -23,7 +23,7 @@
 #         return 10
 #     number = ''
 #     i = 9
-#     while i >= 2 and product != 0:
+#     while i >= 2 and product != 1:
 #         if product % i == 0:
 #             product /= i
 #             number += str(i)
@@ -36,6 +36,8 @@
 #         return -1
 #
 #
-# print(digitsProduct(0))
+# print(digitsProduct(19))
+
+#Narek 1
 
 
