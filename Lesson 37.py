@@ -20,7 +20,7 @@
 # Ruben 2
 # def digitsProduct(product):
 #     if 0 <= product <= 9 and type(product) == int:
-#         return '1' + str(product)
+#         return int('1' + str(product))
 #     number = ''
 #     i = 9
 #     while i >= 2 and product != 1:
@@ -35,7 +35,7 @@
 #     else:
 #         return -1
 #
-#
+# 
 # print(digitsProduct(19))
 
 # Narek 1
