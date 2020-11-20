@@ -32,5 +32,33 @@
 #     return True
 
 # Narek 1
+# def num(number):
+#     num_list = []
+#     count = 1
+#     for i in range(1, number+1):
+#         num_list.append(i)
+#         if count == len(num_list):
+#             print(*num_list)
+#             num_list = []
+#             count +=1
+#     print(*num_list)
+#
+#
+# num(11)
 
-
+# Narek 2
+# def successful_number(list_):
+#     i = 0
+#     j = len(list_) - 1
+#     while list_[i:j + 1]:
+#         k = (i + j) // 2
+#         if list_[k] == k:
+#             return k
+#         elif list_[k] > k:
+#             j = k - 1
+#         else:
+#             i = k + 1
+#     return -1
+#
+#
+# print(successful_number([-1, 0, 1, 2, 3, 7, 8]))
