@@ -26,3 +26,30 @@ def strings_equal(str1, str2):
 
 
 strings_equal('abvdj', 'vjdab')
+
+
+# Ruben 1
+def financialCrisis(roadRegister):
+    ret_val = []
+    for i in range(len(roadRegister)):
+        pop_list = roadRegister.pop(i)
+        append_list = []
+        for j in range(len(roadRegister)):
+            val = roadRegister[j].pop(i)
+            append_list.append(roadRegister[j].copy())
+            roadRegister[j].insert(i, val)
+        ret_val.append(append_list)
+        roadRegister.insert(i, pop_list)
+
+    return ret_val
+
+
+# Ruben 2
+def namingRoads(roads):
+    names = dict()
+    for i in range(len(roads)):
+        names[roads[i][-1]] = set(roads[i][:-1])
+    for i in range(1, len(names)):
+        if len(names[i - 1].union(names[i])) <= 3:
+            return False
+    return True
