@@ -13,11 +13,7 @@ class User:
         return ""
 
     def describe(self):
-        if isinstance(self, Person):
-            return self.name, Person.info(self)
-        elif isinstance(self, Community):
-            return self.name, Community.info(self)
-        return self.name
+        return self.name, Person.info(self)
 
 
 class Person(User):
