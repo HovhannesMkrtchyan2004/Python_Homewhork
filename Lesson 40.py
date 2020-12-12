@@ -13,7 +13,7 @@ class User:
         return ""
 
     def describe(self):
-        return self.name, Person.info(self)
+        return self.name, self.info()
 
 
 class Person(User):
